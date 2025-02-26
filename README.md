@@ -1,6 +1,6 @@
 # Testing the untestable
 
-![[img/testing_the_untestable.png]]
+![testing the untestable](img/testing_the_untestable.webp)
 
 ## Introduction
 
@@ -24,7 +24,7 @@ This is where **TestContainers** and **Respawn** come into play.
 
 1. **TestContainers** ([URL](https://testcontainers.com/modules/mssql/?language=dotnet)):
 
-   - A library for running database containers in integration tests.
+   - A library for running docker containers in integration tests.
    - Provides **isolated, reproducible** test environments.
    - No need for manually setting up a database.
 
@@ -35,7 +35,7 @@ This is where **TestContainers** and **Respawn** come into play.
 
 ## Setting Up the Project
 
-![[img/project_setup.png]]
+![project setup](img/project_setup.webp)
 
 We’ll now walk through an example of setting up a test for a **stored procedure** using these tools.
 
@@ -59,6 +59,7 @@ BEGIN
   WHERE IsActive = 1;
 END
 ```
+
 The Stored procedure can be accessed via a wrapper Method on the database context:
 
 ```cs
@@ -75,7 +76,7 @@ We need to test:
 
 ### Step 3: Bootstrapping the Tests
 
-![[img/bootstrapping.png]]
+![Bootstrapping](img/bootstrapping.webp)
 
 #### Create a shared ClassFixture
 
@@ -151,7 +152,7 @@ The Faker from the bogus package helps us to create useful random Values.
 
 ## Creating Tests
 
-![[img/creating_tests.png]]
+![creating tests](img/creating_tests.webp)
 
 ### Create a first test
 
@@ -161,16 +162,8 @@ using static Tests.MockData;
 
 namespace Tests;
 
-public class StoredProcedureTests: IClassFixture<DatabaseFixture>
+public class StoredProcedureTests(DatabaseFixture fixture): IClassFixture<DatabaseFixture>
 {
-    private readonly DatabaseFixture _fixture;
-    private Respawner _respawner;
-
-    public StoredProcedureTests(DatabaseFixture fixture)
-    {
-        _fixture = fixture;
-    }
-
     [Fact]
     public void GetActiveUsers_returns_only_active_users()
     {
@@ -305,5 +298,7 @@ We covered:
 ✅ A full example with **C#, TestContainers, and Respawn**.
 
 I hope this gives you a **practical way to test stored procedures** in an MS SQL Server database.
+
+![your turn](img/your_turn.webp)
 
 🚀 **Now it’s your turn!** Try integrating this into your project.

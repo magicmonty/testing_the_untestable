@@ -1,6 +1,6 @@
 # Testing the untestable
 
-![[img/testing_the_untestable.webp]]
+![Testing the untestable](img/testing_the_untestable.webp)
 
 ## Why test stored procedures?
 
@@ -17,7 +17,7 @@ This is where **TestContainers** and **Respawn** come into play.
 
 1. **TestContainers** ([URL](https://testcontainers.com/modules/mssql/?language=dotnet)):
 
-   - A library for running database containers in integration tests.
+   - A library for running docker containers in integration tests.
    - Provides **isolated, reproducible** test environments.
    - No need for manually setting up a database.
      <!-- stop -->
@@ -29,7 +29,7 @@ This is where **TestContainers** and **Respawn** come into play.
 
 ## Setting Up the Project
 
-![[img/project_setup.webp]]
+![Project Setup](img/project_setup.webp)
 
 ## Install Project Dependencies
 
@@ -70,7 +70,7 @@ public IReadOnlyCollection<ActiveUser> GetActiveUsers()
 
 ## Bootstrapping the Tests
 
-![[img/bootstrapping.webp]]
+![Bootstrapping](img/bootstrapping.webp)
 
 ## Create a shared ClassFixture
 
@@ -140,7 +140,7 @@ public static class MockData
 
 ## Creating Tests
 
-![[img/creating_tests.webp]]
+![Creating Tests](img/creating_tests.webp)
 
 ## Create a first test
 
@@ -150,20 +150,12 @@ using static Tests.MockData;
 
 namespace Tests;
 
-public class StoredProcedureTests: IClassFixture<DatabaseFixture>
+public class StoredProcedureTests(DatabaseFixture fixture): IClassFixture<DatabaseFixture>
 {
-    private readonly DatabaseFixture _fixture;
-    private Respawner _respawner;
-
-    public StoredProcedureTests(DatabaseFixture fixture)
-    {
-        _fixture = fixture;
-    }
-
     [Fact]
     public void GetActiveUsers_returns_only_active_users()
     {
-        using AwesomeDatabase context = _fixture.CreateContext();
+        using AwesomeDatabase context = fixture.CreateContext();
         User activeUser = CreateActiveUser();
         User inactiveUser = CreateInactiveUser();
 
@@ -299,6 +291,7 @@ We covered:
 ✅ Why testing stored procedures is important.<!-- stop -->
 ✅ How TestContainers and Respawn help in **isolated and efficient** testing.<!-- stop -->
 ✅ A full example with **C#, TestContainers, and Respawn**.
+
 ## Your turn
 
-![[img/your_turn.webp]]
+![Your Turn](img/your_turn.webp)

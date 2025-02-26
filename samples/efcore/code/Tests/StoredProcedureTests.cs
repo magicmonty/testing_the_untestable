@@ -42,7 +42,7 @@ public class StoredProcedureTests(DatabaseFixture fixture) : IAsyncLifetime, ICl
     }
 
     [Fact]
-    public void GetActiveUsers_Respawn_Test()
+    public void GetActiveUsers_returns_2_if_there_are_2_active_users()
     {
         using AwesomeDatabase context = fixture.CreateContext();
         context.Users.Add(CreateActiveUser());

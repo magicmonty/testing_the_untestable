@@ -29,7 +29,7 @@ namespace Model.Migrations
 CREATE PROCEDURE GetActiveUsers
 AS
 BEGIN
-  SELECT *
+  SELECT Id, Name, Email
   FROM Users 
   WHERE IsActive = 1
 END
