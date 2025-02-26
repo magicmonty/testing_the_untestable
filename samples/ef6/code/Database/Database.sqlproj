@@ -1,0 +1,36 @@
+﻿<?xml version="1.0"?>
+<Project>
+  <Sdk Name="Microsoft.Build.Sql" Version="1.0.0-rc1"/>
+  <PropertyGroup>
+    <Name>Database</Name>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RunSqlCodeAnalysis>true</RunSqlCodeAnalysis>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
+    <ModelCollation>1033, CI</ModelCollation>
+    <OutputPath>bin</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- These packages adds additional code analysis rules -->
+    <!-- We recommend using these, but they can be removed if desired -->
+    <PackageReference Include="ErikEJ.DacFX.SqlServer.Rules" Version="1.2.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="1.2.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="**/*.sql">
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+  </ItemGroup>
+</Project>

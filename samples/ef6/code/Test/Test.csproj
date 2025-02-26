@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj"/>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Bogus" Version="35.6.2"/>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0"/>
+    <PackageReference Include="Microsoft.SqlServer.DacFx" Version="162.5.57"/>
+    <PackageReference Include="MSTest" Version="3.8.2"/>
+    <PackageReference Include="Respawn" Version="6.2.1" />
+    <PackageReference Include="TestContainers.MSSql" Version="4.3.0"/>
+  </ItemGroup>
+  <ItemGroup>
+    <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting"/>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\Database\bin\Database.dacpac">
+      <Link>Database.dacpac</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>
