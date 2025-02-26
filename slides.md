@@ -53,9 +53,7 @@ BEGIN
 END
 ```
 
-<!-- stop -->
-
-The Stored procedure can be accessed via a wrapper Method on the database context:
+<!-- stop -->The Stored procedure can be accessed via a wrapper Method on the database context:
 
 ```cs
 public IReadOnlyCollection<ActiveUser> GetActiveUsers()
@@ -64,9 +62,7 @@ public IReadOnlyCollection<ActiveUser> GetActiveUsers()
 }
 ```
 
-<!-- stop -->
-
-We need to test:
+<!-- stop -->We need to test:
 
 - If the stored procedure correctly returns **active users**.
   <!-- stop -->
@@ -192,9 +188,7 @@ Run the tests using:
 dotnet test
 ```
 
-<!-- stop -->
-
-Expected result: Ensures only active users are returned
+<!-- stop -->Expected result: Ensures only active users are returned
 
 ## Adding a second Test
 
@@ -222,9 +216,7 @@ _Expected results:_
 1. **First test**: Ensures only active users are returned
 2. **Second test**: Inserts multiple users, and verifies count
 
-<!-- stop -->
-
-_Actual result:_
+<!-- stop -->_Actual result:_
 
 ```text
 Xunit.Sdk.EqualException
@@ -304,16 +296,9 @@ Respawn makes sure the second test doesn’t affect others.
 ## **Conclusion**
 
 We covered:
-✅ Why testing stored procedures is important.
-
-<!-- stop -->
-
-✅ How TestContainers and Respawn help in **isolated and efficient** testing.
-
-<!-- stop -->
-
+✅ Why testing stored procedures is important.<!-- stop -->
+✅ How TestContainers and Respawn help in **isolated and efficient** testing.<!-- stop -->
 ✅ A full example with **C#, TestContainers, and Respawn**.
-
 ## Your turn
 
 ![[img/your_turn.webp]]
